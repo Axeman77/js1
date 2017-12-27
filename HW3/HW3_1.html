@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+//        var i = 2;
+//        while ( i<=100 ){
+//            var j = 2;
+//            while( j<=i ){
+//                if (i%j == 0) { break; }
+//                j++; }
+//                if( j==i ) { console.log(i); }
+//                i++;
+//        }
+        
+        var x = 100;
+        
+        function isSimple( x ) {
+            if ( x < 2 ) {
+                return false;
+            }
+            var i = 2;
+            while ( i<x ) {
+                if ( x%i===0 )
+                    return false;
+                i++;
+            }
+            return true;
+        } // функция которая перебирает числа и проверяет, является ли число простым;
+
+        var j = 2;
+        
+        while ( j<x ) {
+            if (isSimple( j )) {
+                console.log( j );
+            }
+            j++;
+        } // цикл запускает функцию и выводит число в консоль
+    </script>
+</body>
+</html>

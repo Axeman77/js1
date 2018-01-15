@@ -17,6 +17,7 @@
           event.stopPropagation();
       }
 
+
       function init() {
           var pictures = [ 'casio.jpg', 'swiss.jpg', 'rolex.jpg', 'general.jpg' ];
           var gallery = document.getElementById( 'gallery' );
@@ -38,9 +39,23 @@
 
         gallery.addEventListener( 'click', bigPicture );
 
-      }
+      };
 
-      window.onload = init;
+      function f1 (evt) {
+        var bPictures = ['casio.jpg', 'swiss.jpg', 'general.jpg'];
+        var bPic = document.getElementById('mainPic');
+        for (var i = 0; i < bPictures.length; i++) {
+          var img1 = document.createElement('img');
+          img1.src = 'big/' + bPictures[i];
+          img1.classList.add('mainPic');
+
+        }
+        bPic.appendChild(f1);
+      };
+
+
+
+   window.onload = init;
 
   </script>
   <link rel="stylesheet" href="style.css">
@@ -48,6 +63,10 @@
 <body>
   <div class="wrapper">
     <div class="mainPic" id="mainPic"></div>
+    <div class="button_box">
+      <div class="button" id="buttonb"><img src="big/back.png" alt=""  onclick="f1()"></div>
+      <div class="button" id="buttonf"><img src="big/forward.png" alt="" onclick="console.log('fwd')"></div>
+    </div>
     <div class="gallery" id="gallery"></div>
   </div>
 </body>

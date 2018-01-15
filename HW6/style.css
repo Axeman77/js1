@@ -47,3 +47,8 @@ body {
     margin: 20px 0;
 }
 
+.button_box {
+    width: 250px;
+    margin: auto;
+    display: flex;
+}

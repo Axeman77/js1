@@ -19,43 +19,65 @@
 
 
       function init() {
-          var pictures = [ 'casio.jpg', 'swiss.jpg', 'rolex.jpg', 'general.jpg' ];
-          var gallery = document.getElementById( 'gallery' );
-          var mainPic = document.getElementById( 'mainPic' );
-
-          for( var i = 0; i < pictures.length; i++ ) {
-              var img = document.createElement( 'img' );
+          var pictures = ['casio.jpg', 'swiss.jpg', 'rolex.jpg', 'general.jpg'];
+          var gallery = document.getElementById('gallery');
+          var mainPic = document.getElementById('mainPic');
+          var butb = document.getElementById('buttonb');
+          var butf = document.getElementById('buttonf');
+          
+          
+          for (var i = 0; i < pictures.length; i++) {
+              var img = document.createElement('img');
               img.src = 'small/' + pictures[i];
-              img.classList.add( 'gallery_item' );
+              img.classList.add('gallery_item');
 
 //            Проверка картинки
-              img.onerror = function(){
-              alert( 'картинка' + ' ' + 'small/' + pictures[2] + ' ' + 'не существует' )
-            };
+              img.onerror = function () {
+                  alert('картинка' + ' ' + 'small/' + pictures[2] + ' ' + 'не существует')
+              };
 
-              gallery.appendChild( img );
+              gallery.appendChild(img);
           }
+          
+          
+          gallery.addEventListener('click', bigPicture);
 
+          var current = 1;
+          var imgCount = 3;
+          var bP = ['casio.jpg', 'swiss.jpg', 'general.jpg'];
+          
+          bP[0]=new Image();
+          bP[1]=new Image();
+          bP[2]=new Image();
 
-        gallery.addEventListener( 'click', bigPicture );
+          bP[0].src='big/casio.jpg';
+          bP[1].src='big/swiss.jpg';
+          bP[2].src='big/general.jpg';
+          
+          function back (event) {
+              var bigPicture = document.createElement('img');
+              bigPicture.classList.add('mainPic');
+
+              if (current < imgCount) {
+                  current++;
+                  bigPicture.setAttribute(bP[0].src)
+                  mainPic.appendChild (bigPicture);
+                  
+              }
+              
+              
+          };
+
+          butb.addEventListener('click', back);
+          
 
       };
 
-      function f1 (evt) {
-        var bPictures = ['casio.jpg', 'swiss.jpg', 'general.jpg'];
-        var bPic = document.getElementById('mainPic');
-        for (var i = 0; i < bPictures.length; i++) {
-          var img1 = document.createElement('img');
-          img1.src = 'big/' + bPictures[i];
-          img1.classList.add('mainPic');
 
-        }
-        bPic.appendChild(f1);
-      };
+          
 
-
-
-   window.onload = init;
+          window.onload = init;
+      
 
   </script>
   <link rel="stylesheet" href="style.css">
@@ -64,7 +86,7 @@
   <div class="wrapper">
     <div class="mainPic" id="mainPic"></div>
     <div class="button_box">
-      <div class="button" id="buttonb"><img src="big/back.png" alt=""  onclick="f1()"></div>
+      <div class="button" id="buttonb"><img src="big/back.png" alt=""></div>
       <div class="button" id="buttonf"><img src="big/forward.png" alt="" onclick="console.log('fwd')"></div>
     </div>
     <div class="gallery" id="gallery"></div>

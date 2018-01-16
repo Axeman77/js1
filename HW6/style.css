@@ -51,4 +51,5 @@ body {
     width: 250px;
     margin: auto;
     display: flex;
+    cursor: pointer;
 }
